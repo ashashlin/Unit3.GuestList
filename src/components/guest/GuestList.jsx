@@ -2,10 +2,16 @@ import { useGuest } from "../../context/GuestContext";
 import "./guest.css";
 
 export default function GuestList() {
-  const { guests, setSelectedGuest } = useGuest();
+  const { guests, setSelectedGuest, isLoading, setIsLoading } = useGuest();
 
   const guestRows = guests.map((guest) => (
-    <tr key={guest.id} onClick={() => setSelectedGuest(guest)}>
+    <tr
+      key={guest.id}
+      onClick={() => {
+        setSelectedGuest(guest);
+        setIsLoading(true);
+      }}
+    >
       <td>{guest.name}</td>
       <td>{guest.email}</td>
       <td>{guest.phone}</td>
@@ -25,10 +31,20 @@ export default function GuestList() {
           </tr>
         </thead>
 
-        <tbody>{guestRows}</tbody>
+        <tbody>
+          {isLoading ? (
+            <tr>
+              <td className="loading-msg" colSpan={3}>
+                Loading...
+              </td>
+            </tr>
+          ) : (
+            guestRows
+          )}
+        </tbody>
       </table>
 
-      <p>Select a guest to see more details</p>
+      {!isLoading && <p>Select a guest to see more details</p>}
     </section>
   );
 }

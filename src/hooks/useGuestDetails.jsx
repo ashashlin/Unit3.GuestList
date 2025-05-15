@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export default function useGuests(setGuests, setIsLoading) {
+export default function useGuests(selectedGuest, setGuest, setIsLoading) {
   const baseUrl = "https://fsa-crud-2aa9294fe819.herokuapp.com/api";
   const cohort = "/2504-FTB-ET-WEB-FT";
   const resource = "/guests";
@@ -9,9 +9,11 @@ export default function useGuests(setGuests, setIsLoading) {
   useEffect(() => {
     const getGuests = async () => {
       try {
-        const res = await fetch(api);
+        if (!selectedGuest) return;
+
+        const res = await fetch(api + `/${selectedGuest.id}`);
         const data = await res.json();
-        setGuests(data.data);
+        setGuest(data.data);
       } catch (error) {
         console.log(error);
       } finally {
