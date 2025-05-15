@@ -11,6 +11,7 @@ export default function useGuests(setGuests) {
       try {
         const res = await fetch(api);
         const data = await res.json();
+        console.log(data.data);
         setGuests(data.data);
       } catch (error) {
         console.log(error);

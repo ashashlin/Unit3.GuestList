@@ -9,7 +9,7 @@ export function GuestProvider({ children }) {
 
   useGuests(setGuests);
 
-  const value = { guests, selectedGuest };
+  const value = { guests, selectedGuest, setSelectedGuest };
 
   return (
     <GuestContext.Provider value={value}>{children}</GuestContext.Provider>

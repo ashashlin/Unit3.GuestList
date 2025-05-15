@@ -1,0 +1,35 @@
+#root {
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+.guest-table {
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+.guest-table th,
+.guest-table td {
+  padding: 0.3rem 1rem;
+}
+
+.guest-table tbody tr {
+  cursor: pointer;
+  transition: background-color 150ms;
+}
+
+.guest-table tbody tr:nth-of-type(2n + 1) {
+  background-color: #d3d3d330;
+}
+
+.guest-table tbody tr:hover {
+  background-color: rgb(213, 229, 241);
+}
+
+.guest-info {
+  margin-bottom: 0.7rem;
+}

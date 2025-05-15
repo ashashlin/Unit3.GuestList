@@ -1,10 +1,11 @@
-import { useGuest } from "../context/GuestContext";
+import { useGuest } from "../../context/GuestContext";
+import "./guest.css";
 
 export default function GuestList() {
-  const { guests } = useGuest();
+  const { guests, setSelectedGuest } = useGuest();
 
   const guestRows = guests.map((guest) => (
-    <tr key={guest.id}>
+    <tr key={guest.id} onClick={() => setSelectedGuest(guest)}>
       <td>{guest.name}</td>
       <td>{guest.email}</td>
       <td>{guest.phone}</td>
