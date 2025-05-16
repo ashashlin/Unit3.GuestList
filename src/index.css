@@ -79,7 +79,11 @@ h6 {
 /* CUSTOM CSS */
 
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 1rem;
+  min-height: 100vh;
 }
 
 button {
