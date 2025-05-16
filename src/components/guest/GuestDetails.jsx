@@ -10,9 +10,13 @@ export default function GuestDetails() {
     setGuest,
     isLoading,
     setIsLoading,
+    error,
+    setError,
   } = useGuest();
 
-  useGuestDetails(selectedGuest, setGuest, setIsLoading);
+  useGuestDetails(selectedGuest, setGuest, setIsLoading, setError);
+
+  if (error) return <p>Sorry! {error.message}</p>;
 
   return (
     <section className="guest-details">

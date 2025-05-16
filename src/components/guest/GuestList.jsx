@@ -2,7 +2,10 @@ import { useGuest } from "../../context/GuestContext";
 import "./guest.css";
 
 export default function GuestList() {
-  const { guests, setSelectedGuest, isLoading, setIsLoading } = useGuest();
+  const { guests, setSelectedGuest, isLoading, setIsLoading, error } =
+    useGuest();
+
+  if (error) return <p>Sorry! {error.message}</p>;
 
   const guestRows = guests.map((guest) => (
     <tr

@@ -9,9 +9,10 @@ export function GuestProvider({ children }) {
   const [selectedGuest, setSelectedGuest] = useState(null);
   const [guest, setGuest] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  useGuests(setGuests, setIsLoading);
-  useGuestDetails(selectedGuest, setGuest, setIsLoading);
+  useGuests(setGuests, setIsLoading, setError);
+  useGuestDetails(selectedGuest, setGuest, setIsLoading, setError);
 
   const value = {
     guests,
@@ -21,6 +22,8 @@ export function GuestProvider({ children }) {
     setGuest,
     isLoading,
     setIsLoading,
+    error,
+    setError,
   };
 
   return (
